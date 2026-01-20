@@ -1,0 +1,137 @@
+@extends('Admin.common.layout')
+@section('content')
+@php
+$active = 'local_package';
+@endphp
+<script type="text/javascript">
+    tinymce.init({
+        selector: "#other_details"
+    });
+
+</script>
+<div class="row ">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Local Package Create</h4>
+                <form action="{{route('localpackage.update',$data['localpackage']->id)}}" class="forms-sample" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="id" value="{{$data['localpackage']->id}}">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="time">Time</label>
+                                <select name="time" id="time" class="form-select">
+                                    <option value="" selected disabled>Select Time</option>
+                                    @foreach($data['timeSchadule'] as $key => $value)
+                                    <option value="{{$value->id}}" {{$data['localpackage']->time == $value->id ? 'selected' : ''}}>{{$value->time}}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('time'))
+                                <span class="error text-danger text-sm">{{ $errors->first('time') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="type">Type</label>
+                                <select name="type" id="type" class="form-select form-control">
+                                    <option value="" selected disabled>Select Type</option>
+                                    <option value="ac" {{$data['localpackage']->type == 'ac' ? 'selected' : ''}}>AC</option>
+                                    <option value="non_ac" {{$data['localpackage']->type == 'non_ac' ? 'selected' : ''}}>Non AC</option>
+                                </select>
+                                @if($errors->has('type'))
+                                <span class="error text-danger text-sm">{{ $errors->first('type') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select name="category" id="category" class="form-select form-control">
+                                    <option value="" selected disabled>Select Fule Type</option>
+                                    <option value="sedan" {{$data['localpackage']->category == 'sedan' ? 'selected' : ''}}>Sedan</option>
+                                    <option value="hatchback" {{$data['localpackage']->category == 'hatchback' ? 'selected' : ''}}>Hatchback</option>
+                                    <option value="suv" {{$data['localpackage']->category == 'suv' ? 'selected' : ''}}>SUV</option>
+                                    <option value="coupe" {{$data['localpackage']->category == 'coupe' ? 'selected' : ''}}>Coupe</option>
+                                    <option value="convertable" {{$data['localpackage']->category == 'convertable' ? 'selected' : ''}}>Convertable</option>
+                                    <option value="crossover" {{$data['localpackage']->category == 'crossover' ? 'selected' : ''}}>Crossover</option>
+                                    <option value="other" {{$data['localpackage']->category == 'other' ? 'selected' : ''}}>Other</option>
+                                </select>
+                                @if($errors->has('category'))
+                                <span class="error text-danger text-sm">{{ $errors->first('category') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="fair">Fair</label>
+                                <input type="text" class="form-control" id="fair" placeholder="fair" name="fair" value="{{$data['localpackage']->fair}}">
+                                @if($errors->has('fair'))
+                                <span class="error text-danger text-sm">{{ $errors->first('fair') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="image">Extra Fair Per Km</label>
+                                    <input type="text" class="form-control" id="extra_fair_perKm" placeholder="Extra Fair Per Km" name="extra_fair_perKm" value="{{$data['localpackage']->extra_fair_perKm}}">
+                                    @if($errors->has('extra_fair_perKm'))
+                                    <span class="error text-danger text-sm">{{ $errors->first('extra_fair_perKm') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="extra_fair_perHour">Extra Fair Per Hour</label>
+                                    <input type="text" class="form-control" id="extra_fair_perHour" placeholder="Extra Fair Per Hour" name="extra_fair_perHour" value="{{$data['localpackage']->extra_fair_perHour}}">
+                                    @if($errors->has('extra_fair_perHour'))
+                                    <span class="error text-danger text-sm">{{ $errors->first('extra_fair_perHour') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="driver_charge">Driver Charge</label>
+                                    <input type="text" class="form-control" id="driver_charge" placeholder="Driver Charge" name="driver_charge" value="{{$data['localpackage']->driver_charge}}">
+                                    @if($errors->has('driver_charge'))
+                                    <span class="error text-danger text-sm">{{ $errors->first('driver_charge') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="night_charge">Night Charge</label>
+                                    <input type="text" class="form-control" id="night_charge" placeholder="Night Charges" name="night_charge" value="{{$data['localpackage']->night_charge}}">
+                                    @if($errors->has('night_charge'))
+                                    <span class="error text-danger text-sm">{{ $errors->first('night_charge') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="editor">Other Details</label>
+                                    <textarea class="form-control" id="other_details" rows="8" name="other_details" rows="10" cols="80">{{$data['localpackage']->other_details}}</textarea>
+                                    @if($errors->has('other_details'))
+                                    <span class="error text-danger text-sm">{{ $errors->first('other_details') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    {{-- <button class="btn btn-secondary">Reset</button> --}}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

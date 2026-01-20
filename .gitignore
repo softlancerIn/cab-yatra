@@ -1,0 +1,9 @@
+tests/
+storage/
+localhost.sql
+composer.lock
+robots.txt
+/vendor
+.env
+sitemap.xml
+public/web

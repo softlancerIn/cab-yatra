@@ -1,0 +1,9 @@
+/uploads
+/web/uploads/
+/web/assets/
+/admin/assets/
+.htaccess
+.env
+.php
+robots.txt
+./storage
