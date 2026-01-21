@@ -860,9 +860,6 @@ class WebController extends Controller
             return view('web.pages.thank_you', compact('data'));
         }
 
-
-
-
         $data['footerLink'] = FooterLink::where('status', '1')->orderBy('id', 'DESC')->get();
         $data['footerLinkData'] = FooterLink::where(['status' => '1'])->where('slug', 'like', '%' . $slug . '%')->orderBy('id', 'DESC')->first();
 
@@ -872,6 +869,7 @@ class WebController extends Controller
         $data['package'] = Packages::where('status', '1')->orderBy('id', 'DESC')->get();
         $data['time'] = Time::where('status', '1')->orderBy('id', 'DESC')->get();
         $data['timeSchadule'] = TimeSchadule::where('status', '1')->orderBy('id', 'DESC')->get();
+
         return view('web.master_index', compact('data'));
     }
 

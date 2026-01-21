@@ -162,15 +162,17 @@
             <div class="col-6 col-md-4 col-lg-3">
                 <ul class="important-links ps-0">
                     <h5 class="text-white mb-3">Quick Links</h5>
-                    <li class="mb-2"><a href="{{route('home')}}" class="text-white">Home</a></li>
-                    <li class="mb-2"><a href="{{route('master_function', ['slug' => 'about-us'])}}"
+                    <li class="mb-2"><a href="{{ route('home') }}" class="text-white">Home</a></li>
+                    <li class="mb-2"><a href="{{ route('master_function', ['slug' => 'about-us']) }}"
                             class="text-white">About Us</a></li>
-                    <li class="mb-2"><a href="{{route('master_function', ['slug' => 'term-condition'])}}" class="
+                    <li class="mb-2"><a href="{{ route('master_function', ['slug' => 'term-condition']) }}"
+                            class="
                             text-white">Terms
                             & Condition</a></li>
-                    <li class="mb-2"><a href="{{route('master_function', ['slug' => 'privacy-policy'])}}" class="
+                    <li class="mb-2"><a href="{{ route('master_function', ['slug' => 'privacy-policy']) }}"
+                            class="
                             text-white">Privacy Policy</a></li>
-                    <li class="mb-2"><a href="{{route('master_function', ['slug' => 'faq'])}}"
+                    <li class="mb-2"><a href="{{ route('master_function', ['slug' => 'faq']) }}"
                             class="Ttext-white">Faq</a></li>
                 </ul>
             </div>
@@ -187,14 +189,17 @@
             </div>
             <div class="col-12 col-md-4 col-lg-3 d-none">
                 @php
-                    $data['footerLink_category'] = App\Models\FooterLinkCategory::with('footerLnk')->where('status', '1')->orderBy('id', 'DESC')->get();
+                    $data['footerLink_category'] = App\Models\FooterLinkCategory::with('footerLnk')
+                        ->where('status', '1')
+                        ->orderBy('id', 'DESC')
+                        ->get();
                 @endphp
                 @foreach ($data['footerLink_category'] as $lnk)
                     <ul class="important-links ">
-                        <h5 class="text-white mb-3">{{$lnk->name}}</h5>
+                        <h5 class="text-white mb-3">{{ $lnk->name }}</h5>
                         @foreach ($lnk->footerLnk as $sublnk)
-                            <li class="mb-2"><a href="{{route('master_function', ['slug' => $sublnk->slug])}}"
-                                    class="text-green">{{$sublnk->url_name}}</a></li>
+                            <li class="mb-2"><a href="{{ route('master_function', ['slug' => $sublnk->slug]) }}"
+                                    class="text-green">{{ $sublnk->url_name }}</a></li>
                         @endforeach
 
                     </ul>
@@ -205,25 +210,26 @@
                     <h5 class="text-white text-center text-md-start mb-3">Social Links</h5>
                     <li class="d-flex align-items-center justify-content-around justify-content-md-start">
                         <a href="mailto:cabyatra6244@gmail.com" class="me-md-2">
-                            <img src="{{ env('ASSET_URL') }}assets/images/icons/masages.png" alt="" height="40"
-                                width="40">
+                            <img src="{{ env('ASSET_URL') }}assets/images/icons/masages.png" alt=""
+                                height="40" width="40">
                         </a>
                         <a href="https://www.facebook.com/share/15gpYtg4uG/" class="me-md-2">
-                            <img src="{{ env('ASSET_URL') }}assets/images/icons/fab.png" alt="" height="40" width="40">
+                            <img src="{{ env('ASSET_URL') }}assets/images/icons/fab.png" alt=""
+                                height="40" width="40">
                         </a>
                         <a href="https://www.instagram.com/cabyatra/" class="me-md-2">
-                            <img src="{{ env('ASSET_URL') }}assets/images/icons/instagram.png" alt="" height="40"
-                                width="40">
+                            <img src="{{ env('ASSET_URL') }}assets/images/icons/instagram.png" alt=""
+                                height="40" width="40">
                         </a>
                         <a href="#" class="me-md-2">
-                            <img src="{{ env('ASSET_URL') }}assets/images/icons/tweeter-x.png" alt="" height="40"
-                                width="40">
+                            <img src="{{ env('ASSET_URL') }}assets/images/icons/tweeter-x.png" alt=""
+                                height="40" width="40">
                         </a>
 
-                        <a href="https://youtube.com/@cab_yatra?si=McK1kKHooacIz6wd" style="border:1px solid #fcc51d"
-                            class="rounded me-md-2">
-                            <img src="{{ env('ASSET_URL') }}assets/images/icons/youtube.png" alt="" height="40"
-                                width="40">
+                        <a href="https://youtube.com/@@cab_yatra?si=McK1kKHooacIz6wd"
+                            style="border:1px solid #fcc51d" class="rounded me-md-2">
+                            <img src="{{ env('ASSET_URL') }}assets/images/icons/youtube.png" alt=""
+                                height="40" width="40">
                         </a>
 
 
@@ -238,29 +244,33 @@
                 <hr class="border border-light opacity-100">
                 <div class="row ">
                     @php
-                        $data['footerLink_category'] = App\Models\FooterLinkCategory::with('footerLnk')->where('status', '1')->orderBy('id', 'DESC')->get();
+                        $data['footerLink_category'] = App\Models\FooterLinkCategory::with('footerLnk')
+                            ->where('status', '1')
+                            ->orderBy('id', 'DESC')
+                            ->get();
                     @endphp
                     @foreach ($data['footerLink_category'] as $lnk)
                         <div class="col-12 col-md-4 col-lg-3">
-                            <div class="accordion accordion-flush" id="accordionFlushExample{{$lnk->id}}">
+                            <div class="accordion accordion-flush" id="accordionFlushExample{{ $lnk->id }}">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button py-1 collapsed" type="button"
                                             style="background-color: black;color:white;" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseOne{{$lnk->id}}" aria-expanded="false"
-                                            aria-controls="flush-collapseOne{{$lnk->id}}">
-                                            {{$lnk->name}}
+                                            data-bs-target="#flush-collapseOne{{ $lnk->id }}"
+                                            aria-expanded="false"
+                                            aria-controls="flush-collapseOne{{ $lnk->id }}">
+                                            {{ $lnk->name }}
                                         </button>
                                     </h2>
-                                    <div id="flush-collapseOne{{$lnk->id}}" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample{{$lnk->id}}"
+                                    <div id="flush-collapseOne{{ $lnk->id }}"
+                                        class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionFlushExample{{ $lnk->id }}"
                                         style="background-color: black;">
                                         <div class="accordion-body">
                                             @foreach ($lnk->footerLnk as $sublnk)
-
                                                 <li class="mb-2 d-flex ">
-                                                    <svg width="30px" height="30px" viewBox="0 0 32 32" version="1.1"
-                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    <svg width="30px" height="30px" viewBox="0 0 32 32"
+                                                        version="1.1" xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" fill="#00A743"
                                                         stroke="#00A743" stroke-width="0.00032">
                                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -273,8 +283,8 @@
                                                                 fill="#00A743"> </path>
                                                         </g>
                                                     </svg>
-                                                    <a href="{{route('master_function', ['slug' => $sublnk->slug])}}"
-                                                        class="text-green">{{$sublnk->url_name}}</a>
+                                                    <a href="{{ route('master_function', ['slug' => $sublnk->slug]) }}"
+                                                        class="text-green">{{ $sublnk->url_name }}</a>
                                                 </li>
                                             @endforeach
                                         </div>
@@ -298,11 +308,11 @@
         </div>
     </div>
     <script>
-        document.addEventListener('contextmenu', function (event) {
+        document.addEventListener('contextmenu', function(event) {
             event.preventDefault();
         });
 
-        document.addEventListener('keydown', function (event) {
+        document.addEventListener('keydown', function(event) {
 
         });
     </script>

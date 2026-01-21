@@ -1,10 +1,10 @@
 @extends('web.layout.layout')
 @section('content')
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@@11/swiper-bundle.min.css" />
 
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyO9SWzEn8SWchaaqa6T_yCmCD8cLHPfg&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyO9SWzEn8SWchaaqa6T_yCmCD8cLHPfg&libraries=places">
+    </script>
 
 
     <style>
@@ -487,7 +487,7 @@
                                     style="height:50px;">OutStation</a>
                             </li>
                             <li class="nav-item w-50">
-                                <a href="{{route('tourPackage')}}"
+                                <a href="{{ route('tourPackage') }}"
                                     class="nav-link text-center rounded-pill w-100  d-flex align-items-center justify-content-center"
                                     style="height:50px;">Tour Package</a>
                             </li>
@@ -502,8 +502,8 @@
                                 </li>
                                 <li class="nav-item flex-grow-1 rounded-pill" role="presentation">
                                     <button class="nav-link w-100" id="pills-local-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-local" type="button" role="tab" aria-controls="pills-local"
-                                        aria-selected="false">Hourly/Airport</button>
+                                        data-bs-target="#pills-local" type="button" role="tab"
+                                        aria-controls="pills-local" aria-selected="false">Hourly/Airport</button>
                                 </li>
 
                             </ul>
@@ -512,29 +512,29 @@
                                     aria-labelledby="pills-outstation-tab" tabindex="0">
                                     <div class="d-flex">
                                         <div class="form-check rounded-pill flex-grow-1 me-2 ps-2">
-                                            <input type="radio" class="ms-2 form-check-input mt-0" name="flexRadioDefault1"
-                                                id="showDiv" onclick="toggleDiv()" checked />
+                                            <input type="radio" class="ms-2 form-check-input mt-0"
+                                                name="flexRadioDefault1" id="showDiv" onclick="toggleDiv()" checked />
                                             <label class="ms-lg-3 ms-2 form-check-label" for="showDiv">
                                                 One Way
                                             </label>
                                         </div>
                                         <div class="form-check rounded-pill flex-grow-1 ps-2 ms-2">
-                                            <input class="ms-2 form-check-input mt-0" type="radio" name="flexRadioDefault1"
-                                                id="hideDiv" onclick="toggleDiv()" />
+                                            <input class="ms-2 form-check-input mt-0" type="radio"
+                                                name="flexRadioDefault1" id="hideDiv" onclick="toggleDiv()" />
                                             <label class="form-check-label ms-lg-3 ms-2" for="hideDiv">
                                                 Round Trip
                                             </label>
                                         </div>
                                     </div>
                                     <div id="oneyWayTrip">
-                                        <form id="outStationForm" action="{{route('searchCab')}}" class="row g-1 mt-1"
+                                        <form id="outStationForm" action="{{ route('searchCab') }}" class="row g-1 mt-1"
                                             method="POST">
                                             @csrf
                                             <input type="hidden" name="distance" id="distance">
                                             <div class="col-md-12 outStattionPickupCityDiv">
                                                 <div
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill pickup_cities">
-                                                    <img src="{{config('app.asset_url')}}assets/images/icons/pickup-location.png"
+                                                    <img src="{{ config('app.asset_url') }}assets/images/icons/pickup-location.png"
                                                         alt="Pickup location" height="20" width="20">
                                                     <input type="text" class="form-control ps-1 bg-transparent border-0 "
                                                         id="outStattionPickupCity" placeholder="Enter Pick Up Location">
@@ -548,9 +548,10 @@
                                             <div class="col-md-12  ">
                                                 <div
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
-                                                    <img src="{{config('app.asset_url')}}assets/images/icons/location-black.png"
+                                                    <img src="{{ config('app.asset_url') }}assets/images/icons/location-black.png"
                                                         alt="location" height="20" width="20">
-                                                    <input type="text" class="form-control ps-1 bg-transparent border-0 "
+                                                    <input type="text"
+                                                        class="form-control ps-1 bg-transparent border-0 "
                                                         id="onWayDestination" placeholder="Enter Destination Location">
                                                     {{-- <gmp-place-autocomplete id="onWayDestination"
                                                         class="form-control ps-1 bg-transparent border-0 "
@@ -566,9 +567,10 @@
                                             <div class="col-md-12 addMoreOutStationPickUp ">
                                                 <div
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
-                                                    <img src="{{config('app.asset_url')}}assets/images/icons/plus.png"
+                                                    <img src="{{ config('app.asset_url') }}assets/images/icons/plus.png"
                                                         alt="location" height="20" width="20">
-                                                    <input type="text" class="form-control ps-1 bg-transparent border-0 "
+                                                    <input type="text"
+                                                        class="form-control ps-1 bg-transparent border-0 "
                                                         id="inputEmail4" placeholder="Add More Citys " readonly>
                                                 </div>
                                             </div>
@@ -577,28 +579,33 @@
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
                                                     <div class="country-code-dropdown">
                                                         <img id="flag-image"
-                                                            src="{{config('app.asset_url')}}assets/images/icons/ind-flag.png"
+                                                            src="{{ config('app.asset_url') }}assets/images/icons/ind-flag.png"
                                                             alt="Flag" class="flag-image" />
                                                         <select id="country-code" class="border-0 bg-transparent"
                                                             name="country-code">
-                                                            <option value="+1" data-flag="https://flagcdn.com/us.svg">+1
+                                                            <option value="+1" data-flag="https://flagcdn.com/us.svg">
+                                                                +1
                                                             </option>
-                                                            <option value="+44" data-flag="https://flagcdn.com/gb.svg">+44
+                                                            <option value="+44" data-flag="https://flagcdn.com/gb.svg">
+                                                                +44
                                                             </option>
                                                             <option value="+91" data-flag="https://flagcdn.com/in.svg"
                                                                 selected>
                                                                 +91</option>
-                                                            <option value="+81" data-flag="https://flagcdn.com/jp.svg">+81
+                                                            <option value="+81" data-flag="https://flagcdn.com/jp.svg">
+                                                                +81
                                                             </option>
-                                                            <option value="+61" data-flag="https://flagcdn.com/au.svg">+61
+                                                            <option value="+61" data-flag="https://flagcdn.com/au.svg">
+                                                                +61
                                                             </option>
                                                             <!-- Add more countries as needed -->
                                                         </select>
                                                     </div>
-                                                    <input type="text" class="form-control ps-1 bg-transparent border-0 "
-                                                        name="phone" id="phone" placeholder="Enter Mobile Number">
+                                                    <input type="text"
+                                                        class="form-control ps-1 bg-transparent border-0 " name="phone"
+                                                        id="phone" placeholder="Enter Mobile Number">
                                                     <a href="#"> <img
-                                                            src="{{config('app.asset_url')}}assets/images/icons/arow-right-black.png"
+                                                            src="{{ config('app.asset_url') }}assets/images/icons/arow-right-black.png"
                                                             alt="location" height="20" width="20" class="me-3">
                                                     </a>
                                                 </div>
@@ -612,15 +619,16 @@
                                     </div>
                                     <!-- Round Trip Div -->
                                     <div id="roundTrip">
-                                        <form action="{{route('outStationRoutesearch')}}" class="row g-1 mt-1" method="POST"
-                                            id="outStationRouteForm">
+                                        <form action="{{ route('outStationRoutesearch') }}" class="row g-1 mt-1"
+                                            method="POST" id="outStationRouteForm">
                                             @csrf
                                             <div class="col-md-12">
                                                 <div
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
-                                                    <img src="{{config('app.asset_url')}}assets/images/icons/pickup-location.png"
+                                                    <img src="{{ config('app.asset_url') }}assets/images/icons/pickup-location.png"
                                                         alt="Pickup location" height="20" width="20">
-                                                    <input type="text" class="form-control ps-1 bg-transparent border-0 "
+                                                    <input type="text"
+                                                        class="form-control ps-1 bg-transparent border-0 "
                                                         name="pickUpLoc" id="outStationRoundPickUp"
                                                         placeholder="Enter Pick Up Location ">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -637,9 +645,10 @@
                                             <div class="col-md-12 addMoreRoundTripDestinationCity">
                                                 <div
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
-                                                    <img src="{{config('app.asset_url')}}assets/images/icons/location-black.png"
+                                                    <img src="{{ config('app.asset_url') }}assets/images/icons/location-black.png"
                                                         alt="location" height="20" width="20">
-                                                    <input type="text" class="form-control ps-1 bg-transparent border-0 "
+                                                    <input type="text"
+                                                        class="form-control ps-1 bg-transparent border-0 "
                                                         name="destination[]" id="outStationRoundDestination"
                                                         placeholder="Enter Destination Location">
                                                 </div>
@@ -649,9 +658,10 @@
                                             <div class="col-md-12 addMoreRoundTripDestinationDiv">
                                                 <div
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
-                                                    <img src="{{config('app.asset_url')}}assets/images/icons/plus.png"
+                                                    <img src="{{ config('app.asset_url') }}assets/images/icons/plus.png"
                                                         alt="location" height="20" width="20">
-                                                    <input type="text" class="form-control ps-1 bg-transparent border-0 "
+                                                    <input type="text"
+                                                        class="form-control ps-1 bg-transparent border-0 "
                                                         id="inputEmail4" placeholder="Add More Drop Location" readonly>
                                                 </div>
                                             </div>
@@ -661,28 +671,33 @@
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
                                                     <div class="country-code-dropdown">
                                                         <img id="flag-image"
-                                                            src="{{config('app.asset_url')}}assets/images/icons/ind-flag.png"
+                                                            src="{{ config('app.asset_url') }}assets/images/icons/ind-flag.png"
                                                             alt="Flag" class="flag-image" />
                                                         <select id="country-code" class="border-0 bg-transparent"
                                                             name="country-code">
-                                                            <option value="+1" data-flag="https://flagcdn.com/us.svg">+91
+                                                            <option value="+1" data-flag="https://flagcdn.com/us.svg">
+                                                                +91
                                                             </option>
-                                                            <option value="+44" data-flag="https://flagcdn.com/gb.svg">+44
+                                                            <option value="+44" data-flag="https://flagcdn.com/gb.svg">
+                                                                +44
                                                             </option>
-                                                            <option value="+91" data-flag="https://flagcdn.com/in.svg">+1
+                                                            <option value="+91" data-flag="https://flagcdn.com/in.svg">
+                                                                +1
                                                             </option>
-                                                            <option value="+81" data-flag="https://flagcdn.com/jp.svg">+81
+                                                            <option value="+81" data-flag="https://flagcdn.com/jp.svg">
+                                                                +81
                                                             </option>
-                                                            <option value="+61" data-flag="https://flagcdn.com/au.svg">+61
+                                                            <option value="+61" data-flag="https://flagcdn.com/au.svg">
+                                                                +61
                                                             </option>
                                                             <!-- Add more countries as needed -->
                                                         </select>
                                                     </div>
-                                                    <input type="email" class="form-control ps-1 bg-transparent border-0 "
-                                                        name="phone" id="outStationRoutePhone"
-                                                        placeholder="Enter Mobile Number">
+                                                    <input type="email"
+                                                        class="form-control ps-1 bg-transparent border-0 " name="phone"
+                                                        id="outStationRoutePhone" placeholder="Enter Mobile Number">
                                                     <a href="#"> <img
-                                                            src="{{config('app.asset_url')}}assets/images/icons/arow-right-black.png"
+                                                            src="{{ config('app.asset_url') }}assets/images/icons/arow-right-black.png"
                                                             alt="location" height="20" width="20" class="me-3">
                                                     </a>
                                                 </div>
@@ -704,30 +719,31 @@
                                     aria-labelledby="pills-local-tab" tabindex="0">
                                     <div class="d-flex">
                                         <div class="form-check rounded-pill flex-grow-1 me-2 ps-2">
-                                            <input class="form-check-input ms-2 mt-0" type="radio" name="flexRadioDefault"
-                                                id="localDivShow" onclick="localTab()" checked />
+                                            <input class="form-check-input ms-2 mt-0" type="radio"
+                                                name="flexRadioDefault" id="localDivShow" onclick="localTab()" checked />
                                             <label class="ms-lg-3 ms-2 form-check-label" for="localDivShow">
                                                 Local Trip
                                             </label>
                                         </div>
                                         <div class="form-check rounded-pill flex-grow-1 ps-2 ms-2">
-                                            <input class="ms-2 form-check-input mt-0" type="radio" name="flexRadioDefault"
-                                                id="localDivHide" onclick="localTab()">
+                                            <input class="ms-2 form-check-input mt-0" type="radio"
+                                                name="flexRadioDefault" id="localDivHide" onclick="localTab()">
                                             <label class="form-check-label ms-lg-3 ms-2" for="localDivHide">
                                                 Local Airport
                                             </label>
                                         </div>
                                     </div>
                                     <div id="routTrip">
-                                        <form action="{{route('localRouteSearch')}}" class="row g-1 mt-1"
+                                        <form action="{{ route('localRouteSearch') }}" class="row g-1 mt-1"
                                             id="localRouteTrpForm" method="POST">
                                             @csrf
                                             <div class="col-md-12">
                                                 <div
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
-                                                    <img src="{{config('app.asset_url')}}assets/images/icons/pickup-location.png"
+                                                    <img src="{{ config('app.asset_url') }}assets/images/icons/pickup-location.png"
                                                         alt="Pickup location" height="20" width="20">
-                                                    <input type="text" class="form-control ps-1 bg-transparent border-0 "
+                                                    <input type="text"
+                                                        class="form-control ps-1 bg-transparent border-0 "
                                                         id="localRoundPickupLoc" placeholder="Enter Pick Up Location"
                                                         name="pickUpLocation">
                                                 </div>
@@ -735,15 +751,16 @@
                                             <div class="col-md-12">
                                                 <div
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
-                                                    <img src="{{config('app.asset_url')}}assets/images/icons/location-black.png"
+                                                    <img src="{{ config('app.asset_url') }}assets/images/icons/location-black.png"
                                                         alt="location" height="20" width="20">
                                                     <select
                                                         class="form-select fw-semibold text-dark form-control ps-1 bg-transparent border-0"
                                                         aria-label="Default select example" name="timeschaduleId"
                                                         id="timeschaduleId">
                                                         <option value="" selected disabled>Select Time</option>
-                                                        @foreach($data['time'] as $key => $value)
-                                                            <option value="{{$value->id}}">{{$value->time}}</option>
+                                                        @foreach ($data['time'] as $key => $value)
+                                                            <option value="{{ $value->id }}">{{ $value->time }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -755,28 +772,34 @@
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
                                                     <div class="country-code-dropdown">
                                                         <img id="flag-image"
-                                                            src="{{config('app.asset_url')}}assets/images/icons/ind-flag.png"
+                                                            src="{{ config('app.asset_url') }}assets/images/icons/ind-flag.png"
                                                             alt="Flag" class="flag-image" />
                                                         <select id="country-code" class="border-0 bg-transparent"
                                                             name="country-code">
-                                                            <option value="+1" data-flag="https://flagcdn.com/us.svg">+91
+                                                            <option value="+1" data-flag="https://flagcdn.com/us.svg">
+                                                                +91
                                                             </option>
-                                                            <option value="+44" data-flag="https://flagcdn.com/gb.svg">+44
+                                                            <option value="+44" data-flag="https://flagcdn.com/gb.svg">
+                                                                +44
                                                             </option>
-                                                            <option value="+91" data-flag="https://flagcdn.com/in.svg">+1
+                                                            <option value="+91" data-flag="https://flagcdn.com/in.svg">
+                                                                +1
                                                             </option>
-                                                            <option value="+81" data-flag="https://flagcdn.com/jp.svg">+81
+                                                            <option value="+81" data-flag="https://flagcdn.com/jp.svg">
+                                                                +81
                                                             </option>
-                                                            <option value="+61" data-flag="https://flagcdn.com/au.svg">+61
+                                                            <option value="+61" data-flag="https://flagcdn.com/au.svg">
+                                                                +61
                                                             </option>
                                                             <!-- Add more countries as needed -->
                                                         </select>
                                                     </div>
-                                                    <input type="text" class="form-control ps-1 bg-transparent border-0 "
+                                                    <input type="text"
+                                                        class="form-control ps-1 bg-transparent border-0 "
                                                         id="localRouteTrpPhone" placeholder="Enter Mobile Number"
                                                         name="phone">
                                                     <a href="#"> <img
-                                                            src="{{config('app.asset_url')}}assets/images/icons/arow-right-black.png"
+                                                            src="{{ config('app.asset_url') }}assets/images/icons/arow-right-black.png"
                                                             alt="location" height="20" width="20" class="me-3">
                                                     </a>
                                                 </div>
@@ -790,8 +813,8 @@
                                     </div>
                                     <!-- ============= Airport section -->
                                     <div id="airPort">
-                                        <form action="{{route('airPortSearch')}}" class="row g-1 mt-1" id="airPortFrom"
-                                            method="POST">
+                                        <form action="{{ route('airPortSearch') }}" class="row g-1 mt-1"
+                                            id="airPortFrom" method="POST">
                                             @csrf
                                             <div class="col-md-12">
                                                 <div
@@ -809,9 +832,10 @@
                                             <div class="col-md-12">
                                                 <div
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
-                                                    <img src="{{config('app.asset_url')}}assets/images/icons/location-black.png"
+                                                    <img src="{{ config('app.asset_url') }}assets/images/icons/location-black.png"
                                                         alt="location" height="20" width="20">
-                                                    <input type="email" class="form-control ps-1 bg-transparent border-0 "
+                                                    <input type="email"
+                                                        class="form-control ps-1 bg-transparent border-0 "
                                                         name="pickupLoc" id="outstationLocalPickUpLocation"
                                                         placeholder="Select Pickup Airport Local">
                                                 </div>
@@ -819,9 +843,10 @@
                                             <div class="col-md-12">
                                                 <div
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
-                                                    <img src="{{config('app.asset_url')}}assets/images/icons/location-black.png"
+                                                    <img src="{{ config('app.asset_url') }}assets/images/icons/location-black.png"
                                                         alt="location" height="20" width="20">
-                                                    <input type="text" class="form-control ps-1 bg-transparent border-0 "
+                                                    <input type="text"
+                                                        class="form-control ps-1 bg-transparent border-0 "
                                                         name="destination" id="localAirportSelectAirport"
                                                         placeholder="Select Drop Airport Local">
                                                 </div>
@@ -831,27 +856,33 @@
                                                     class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
                                                     <div class="country-code-dropdown">
                                                         <img id="flag-image"
-                                                            src="{{config('app.asset_url')}}assets/images/icons/ind-flag.png"
+                                                            src="{{ config('app.asset_url') }}assets/images/icons/ind-flag.png"
                                                             alt="Flag" class="flag-image" />
                                                         <select id="country-code" class="border-0 bg-transparent"
                                                             name="country-code">
-                                                            <option value="+1" data-flag="https://flagcdn.com/us.svg">+91
+                                                            <option value="+1" data-flag="https://flagcdn.com/us.svg">
+                                                                +91
                                                             </option>
-                                                            <option value="+44" data-flag="https://flagcdn.com/gb.svg">+44
+                                                            <option value="+44" data-flag="https://flagcdn.com/gb.svg">
+                                                                +44
                                                             </option>
-                                                            <option value="+91" data-flag="https://flagcdn.com/in.svg">+1
+                                                            <option value="+91" data-flag="https://flagcdn.com/in.svg">
+                                                                +1
                                                             </option>
-                                                            <option value="+81" data-flag="https://flagcdn.com/jp.svg">+81
+                                                            <option value="+81" data-flag="https://flagcdn.com/jp.svg">
+                                                                +81
                                                             </option>
-                                                            <option value="+61" data-flag="https://flagcdn.com/au.svg">+61
+                                                            <option value="+61" data-flag="https://flagcdn.com/au.svg">
+                                                                +61
                                                             </option>
                                                             <!-- Add more countries as needed -->
                                                         </select>
                                                     </div>
-                                                    <input type="email" class="form-control ps-1 bg-transparent border-0 "
-                                                        name="phone" id="airportPhone" placeholder="Enter Mobile Number">
+                                                    <input type="email"
+                                                        class="form-control ps-1 bg-transparent border-0 " name="phone"
+                                                        id="airportPhone" placeholder="Enter Mobile Number">
                                                     <a href="#"> <img
-                                                            src="{{config('app.asset_url')}}assets/images/icons/arow-right-black.png"
+                                                            src="{{ config('app.asset_url') }}assets/images/icons/arow-right-black.png"
                                                             alt="location" height="20" width="20" class="me-3">
                                                     </a>
                                                 </div>
@@ -886,13 +917,13 @@
                             <ul class="nav justify-content-center">
                                 <li>
                                     <a href="#">
-                                        <img src="{{config('app.asset_url')}}assets/images/img/playstore.png"
+                                        <img src="{{ config('app.asset_url') }}assets/images/img/playstore.png"
                                             alt="playstore btn" height="100" width="150" class="">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="{{config('app.asset_url')}}assets/images/img/app-store.png"
+                                        <img src="{{ config('app.asset_url') }}assets/images/img/app-store.png"
                                             alt="app store" height="100" width="150" class=" ">
                                     </a>
                                 </li>
@@ -916,14 +947,14 @@
                         <ul class="nav justify-content-center">
                             <li>
                                 <a href="#">
-                                    <img src="{{config('app.asset_url')}}assets/images/img/playstore.png"
+                                    <img src="{{ config('app.asset_url') }}assets/images/img/playstore.png"
                                         alt="playstore btn" height="100" width="200" class="">
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="{{config('app.asset_url')}}assets/images/img/app-store.png" alt="app store"
-                                        height="100" width="200" class=" ">
+                                    <img src="{{ config('app.asset_url') }}assets/images/img/app-store.png"
+                                        alt="app store" height="100" width="200" class=" ">
                                 </a>
                             </li>
                         </ul>
@@ -950,13 +981,13 @@
                             <ul class="nav  mt-4 flex-nowrap">
                                 <li class="me-2">
                                     <a href="#">
-                                        <img src="{{config('app.asset_url')}}assets/images/img/playstore.png"
+                                        <img src="{{ config('app.asset_url') }}assets/images/img/playstore.png"
                                             alt="playstore btn" class="img-fluid" width="200">
                                     </a>
                                 </li>
                                 <li class="ms-2">
                                     <a href="#">
-                                        <img src="{{config('app.asset_url')}}assets/images/img/app-store.png"
+                                        <img src="{{ config('app.asset_url') }}assets/images/img/app-store.png"
                                             alt="app store" class="img-fluid" width="200">
                                     </a>
                                 </li>
@@ -972,7 +1003,7 @@
                         </div>
                         <div class="p-3 support rounded-end-pill bg-green text-white d-flex align-items-center ">
                             <figure class="mb-0">
-                                <img src="{{config('app.asset_url')}}assets/images/img/support.webp" alt="support"
+                                <img src="{{ config('app.asset_url') }}assets/images/img/support.webp" alt="support"
                                     width="35" height="35">
                             </figure>
                             <span class="ms-3">24/7 Availability</span>
@@ -991,7 +1022,7 @@
                             professional drivers through an easy booking system—ensuring a seamless travel experience every
                             time.</p>
                         <div class=" ">
-                            <a href="{{route('master_function', ['slug' => 'about-us'])}}"
+                            <a href="{{ route('master_function', ['slug' => 'about-us']) }}"
                                 class="btn bg-green text-white d-none d-md-inline-block mt-3">Know
                                 More</a>
 
@@ -1016,8 +1047,8 @@
                     <a href="https://cabyatra.com/haridwar-to-char-dham-kedarnath-badrinath-gangotri-yamunotri-yatra-taxi-cab-booking-services"
                         class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/arrow-right.png" alt="Home pickup icon"
-                                height="19 " width="19 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/arrow-right.png"
+                                alt="Home pickup icon" height="19 " width="19 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 style="color:#00f; font-size:15px">Haridwan to Char Dham Yatra Cab Service</h3>
@@ -1029,8 +1060,8 @@
                     <a href="https://cabyatra.com/rishikesh-to-char-dham-kedarnath-badrinath-gangotri-yamunotri-yatra-taxi-cab-booking-services"
                         class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/arrow-right.png" alt="Home pickup icon"
-                                height="19 " width="19 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/arrow-right.png"
+                                alt="Home pickup icon" height="19 " width="19 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 style="color:#00f; font-size:15px">Rishikesh to Char Dham Yatra Cab Service</h3>
@@ -1042,8 +1073,8 @@
                     <a href="https://cabyatra.com/delhi-to-agra-taxicab-booking-services"
                         class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/arrow-right.png" alt="Home pickup icon"
-                                height="19 " width="19 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/arrow-right.png"
+                                alt="Home pickup icon" height="19 " width="19 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 style="color:#00f; font-size:15px">Delhi To Agra Cab Service</h3>
@@ -1055,8 +1086,8 @@
                     <a href="https://cabyatra.com/delhi-to-dehradun-taxi-cab-booking-service"
                         class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/arrow-right.png" alt="Home pickup icon"
-                                height="19 " width="19 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/arrow-right.png"
+                                alt="Home pickup icon" height="19 " width="19 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 style="color:#00f; font-size:15px">Delhi to Dehradun Cab Service</h3>
@@ -1068,8 +1099,8 @@
                     <a href="https://cabyatra.com/delhi-to-haldwani-cab-services"
                         class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/arrow-right.png" alt="Home pickup icon"
-                                height="19 " width="19 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/arrow-right.png"
+                                alt="Home pickup icon" height="19 " width="19 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 style="color:#00f; font-size:15px">Delhi to Haldwani Cab Service</h3>
@@ -1082,8 +1113,8 @@
                     <a href="https://cabyatra.com/delhi-to-lucknow-cab-services"
                         class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/arrow-right.png" alt="Home pickup icon"
-                                height="19 " width="19 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/arrow-right.png"
+                                alt="Home pickup icon" height="19 " width="19 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 style="color:#00f; font-size:15px">Delhi to Lucknow Cab Service</h3>
@@ -1095,8 +1126,8 @@
                     <a href="https://cabyatra.com/delhi-to-rishikesh-taxicab-booking-services"
                         class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/arrow-right.png" alt="Home pickup icon"
-                                height="19 " width="19 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/arrow-right.png"
+                                alt="Home pickup icon" height="19 " width="19 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 style="color:#00f; font-size:15px">Delhi to Rishikesh Cab Service</h3>
@@ -1108,8 +1139,8 @@
                     <a href="https://cabyatra.com/delhi-to-nainital-taxi-cab-booking-service"
                         class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/arrow-right.png" alt="Home pickup icon"
-                                height="19 " width="19 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/arrow-right.png"
+                                alt="Home pickup icon" height="19 " width="19 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 style="color:#00f; font-size:15px">Delhi to Nanital Cab Service</h3>
@@ -1121,8 +1152,8 @@
                     <a href="https://cabyatra.com/delhi-to-jaipur-taxicab-booking-services"
                         class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/arrow-right.png" alt="Home pickup icon"
-                                height="19 " width="19 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/arrow-right.png"
+                                alt="Home pickup icon" height="19 " width="19 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 style="color:#00f; font-size:15px">Delhi to Jaipur Cab Service</h3>
@@ -1134,8 +1165,8 @@
                     <a href="https://cabyatra.com/delhi-to-jim-corbett-ramnagar-cab-services"
                         class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/arrow-right.png" alt="Home pickup icon"
-                                height="19 " width="19 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/arrow-right.png"
+                                alt="Home pickup icon" height="19 " width="19 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 style="color:#00f; font-size:15px">Delhi to Jim Corbett Cab Service</h3>
@@ -1145,7 +1176,7 @@
                 </div>
                 <div class="col-12">
                     <div class="text-center">
-                        <a href="{{route('home')}}" class="btn btn-light  text-white bg-green rounded ">Book Now</a>
+                        <a href="{{ route('home') }}" class="btn btn-light  text-white bg-green rounded ">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -1297,8 +1328,8 @@
 
                         <div class="mb-3 ">
                             <figure class="d-flex align-items-center">
-                                <img src="{{ env('ASSET_URL') }}assets/images/img/instagram_new.png" alt="sedan cab yatra "
-                                    width="25" class="img-fluid">
+                                <img src="{{ env('ASSET_URL') }}assets/images/img/instagram_new.png"
+                                    alt="sedan cab yatra " width="25" class="img-fluid">
                                 <figcaption class="ms-2">Instagram</figcaption>
                             </figure>
                             <div class="social-media bg-white rounded-end-pill py-3 px-3 ps-5">
@@ -1309,8 +1340,8 @@
                         </div>
                         <div class="mb-3 ">
                             <figure class="d-flex align-items-center">
-                                <img src="{{ env('ASSET_URL') }}assets/images/img/facebook_new.png" alt="sedan cab yatra "
-                                    width="25" class="img-fluid">
+                                <img src="{{ env('ASSET_URL') }}assets/images/img/facebook_new.png"
+                                    alt="sedan cab yatra " width="25" class="img-fluid">
                                 <figcaption class="ms-2">Facebook</figcaption>
                             </figure>
                             <div class="social-media bg-white rounded-end-pill py-3 px-3 ps-5">
@@ -1345,8 +1376,8 @@
                         </div>
                         <div class="mb-3 ">
                             <figure class="d-flex align-items-center">
-                                <img src="{{ env('ASSET_URL') }}assets/images/img/instagram_new.png" alt="sedan cab yatra "
-                                    width="25" class="img-fluid">
+                                <img src="{{ env('ASSET_URL') }}assets/images/img/instagram_new.png"
+                                    alt="sedan cab yatra " width="25" class="img-fluid">
                                 <figcaption class="ms-2"> Messenger</figcaption>
                             </figure>
                             <div class="social-media bg-white rounded-end-pill py-3 px-3 ps-5">
@@ -1356,7 +1387,8 @@
                             </div>
                         </div>
 
-                        <p class="social_cnt">Cab Yatra gives an activated aliveness on Instagram (@cabyatra, @cab.yatra)
+                        <p class="social_cnt">Cab Yatra gives an activated aliveness on Instagram
+                            (@@cabyatra, @@cab.yatra)
                             and Facebook (Cabsyatra, CabYatra), where they post travel guidence service, and special unique
                             offers. These platforms pages help customers to stay updated about city and outstation travel
                             services, proffessional drivers, 24/7 helpline, and with transparent billing. Followcab yatra
@@ -1486,7 +1518,8 @@
                             </div>
                             <div class="col-12">
                                 <div class="mt-4">
-                                    <a href="{{route('home')}}" class="btn btn-light  text-white bg-green rounded-0">Book
+                                    <a href="{{ route('home') }}"
+                                        class="btn btn-light  text-white bg-green rounded-0">Book
                                         Now</a>
                                 </div>
                             </div>
@@ -1572,7 +1605,8 @@
 
     <!-- ==== Popular Packages ==== -->
 
-    <section class="sec-padding cab-routs py-3 overflow-hidden
+    <section
+        class="sec-padding cab-routs py-3 overflow-hidden
                                                             ">
         <div class="container">
             <div class="mt-lg-5 mb-4">
@@ -1589,14 +1623,17 @@
                                 taxi/cab booking service</a></li>
                         <li><a href="https://cabyatra.com/delhi-to-char-dham-yatra-by-taxi">Delhi to char dhaam yatra
                                 taxi/cab service</a></li>
-                        <li><a href="https://cabyatra.com/delhi-to-haridwar-quick-pick-up-taxi-cab-booking-service">Delhi to
+                        <li><a href="https://cabyatra.com/delhi-to-haridwar-quick-pick-up-taxi-cab-booking-service">Delhi
+                                to
                                 haridwar taxi/cab booking service</a></li>
                         <li><a href="https://cabyatra.com/delhi-to-kachi-dham-taxi-cab-online-booking-service">Delhi to
                                 kainchi dham taxi cab booking service</a>
                         </li>
-                        <li><a href="https://cabyatra.com/delhi-to-lucknow-taxi-cab-online-booking-service">Delhi to lucknow
+                        <li><a href="https://cabyatra.com/delhi-to-lucknow-taxi-cab-online-booking-service">Delhi to
+                                lucknow
                                 cab service</a></li>
-                        <li><a href="https://cabyatra.com/cab-for-bareilly-from-delhi-airport">Delhi airport to bareilly cab
+                        <li><a href="https://cabyatra.com/cab-for-bareilly-from-delhi-airport">Delhi airport to bareilly
+                                cab
                                 taxi service</a></li>
                         <li><a href="https://cabyatra.com/delhi-to-massoorie-taxi-booking-service">Delhi to mussoorie cab
                                 booking service</a></li>
@@ -1609,16 +1646,16 @@
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img src="{{config('app.asset_url')}}assets/images/img/slider2.webp" alt="slider2-img"
-                                        class="img-fluid ">
+                                    <img src="{{ config('app.asset_url') }}assets/images/img/slider2.webp"
+                                        alt="slider2-img" class="img-fluid ">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="{{config('app.asset_url')}}assets/images/img/slider3.webp" alt="slider3-img"
-                                        class="img-fluid">
+                                    <img src="{{ config('app.asset_url') }}assets/images/img/slider3.webp"
+                                        alt="slider3-img" class="img-fluid">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="{{config('app.asset_url')}}assets/images/img/slider1.webp" alt="slider1-img"
-                                        class="img-fluid ">
+                                    <img src="{{ config('app.asset_url') }}assets/images/img/slider1.webp"
+                                        alt="slider1-img" class="img-fluid ">
                                 </div>
                             </div>
                             <div class="swiper-pagination"></div>
@@ -1642,8 +1679,8 @@
                 <div class="col-12 col-lg-5">
                     <div class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/star-black.png" alt="Home pickup icon"
-                                height="25 " width="25 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/star-black.png"
+                                alt="Home pickup icon" height="25 " width="25 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 class="text-green">Door to Door Pickup & Drop</h3>
@@ -1657,7 +1694,7 @@
                 <div class="col-12 col-lg-5">
                     <div class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/professional-driver.png"
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/professional-driver.png"
                                 alt="Home pickup icon" height="25 " width="25 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
@@ -1673,8 +1710,8 @@
                 <div class="col-12 col-lg-5">
                     <div class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/clean-car.png" alt="Home pickup icon"
-                                height="25 " width="25 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/clean-car.png"
+                                alt="Home pickup icon" height="25 " width="25 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 class="text-green">Neat & Clean Car</h3>
@@ -1689,8 +1726,8 @@
                 <div class="col-12 col-lg-5">
                     <div class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/billing.png" alt="Home pickup icon"
-                                height="25 " width="25 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/billing.png"
+                                alt="Home pickup icon" height="25 " width="25 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 class="text-green">Transparent Billing</h3>
@@ -1716,8 +1753,8 @@
                 <div class="col-12 col-lg-5">
                     <div class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/star-black.png" alt="Home pickup icon"
-                                height="25 " width="25 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/star-black.png"
+                                alt="Home pickup icon" height="25 " width="25 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 class="text-green">One Way Outstation</h3>
@@ -1731,8 +1768,8 @@
                 <div class="col-12 col-lg-5">
                     <div class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/star-black.png" alt="Home pickup icon"
-                                height="25 " width="25 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/star-black.png"
+                                alt="Home pickup icon" height="25 " width="25 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 class="text-green">Book for roundtrip</h3>
@@ -1748,8 +1785,8 @@
                 <div class="col-12 col-lg-5">
                     <div class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/star-black.png" alt="Home pickup icon"
-                                height="25 " width="25 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/star-black.png"
+                                alt="Home pickup icon" height="25 " width="25 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 class="text-green">Book Local cab</h3>
@@ -1764,8 +1801,8 @@
                 <div class="col-12 col-lg-5">
                     <div class="facility-content row justify-content-center flex-nowrap ">
                         <figure class="d-flex col-2 align-items-center justify-content-center">
-                            <img src="{{config('app.asset_url')}}assets/images/icons/star-black.png" alt="Home pickup icon"
-                                height="25 " width="25 ">
+                            <img src="{{ config('app.asset_url') }}assets/images/icons/star-black.png"
+                                alt="Home pickup icon" height="25 " width="25 ">
                         </figure>
                         <div class="facility-text col-10 ps-0">
                             <h3 class="text-green">Book Air Port Cab</h3>
@@ -1778,7 +1815,7 @@
                 </div>
                 <div class="col-12">
                     <div class="text-center">
-                        <a href="{{route('home')}}" class="btn btn-light  text-white bg-green rounded ">Book Now</a>
+                        <a href="{{ route('home') }}" class="btn btn-light  text-white bg-green rounded ">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -1802,7 +1839,8 @@
                 <div class="col-12 col-md-6 col-lg-3" data-aos="fade-up">
                     <div class="attractiion-img bg-white shadow-sm p-3">
                         <figure class="mb-0">
-                            <img src="{{ env('ASSET_URL') }}assets/images/img/kedarnath.jpg" alt="" class="img-fluid">
+                            <img src="{{ env('ASSET_URL') }}assets/images/img/kedarnath.jpg" alt=""
+                                class="img-fluid">
                             <figcaption class=" mt-2 text-center  text-uppercase">Kedarnath</figcaption>
                         </figure>
                     </div>
@@ -1811,7 +1849,8 @@
                 <div class="col-12 col-md-6 col-lg-3 " data-aos="fade-up">
                     <div class="attractiion-img bg-white shadow-sm p-3">
                         <figure class="mb-0">
-                            <img src="{{ env('ASSET_URL') }}assets/images/img/badrinath.jpg" alt="" class="img-fluid">
+                            <img src="{{ env('ASSET_URL') }}assets/images/img/badrinath.jpg" alt=""
+                                class="img-fluid">
                             <figcaption class=" mt-2 text-center  text-uppercase">Badrinath</figcaption>
                         </figure>
                     </div>
@@ -1821,7 +1860,8 @@
                     <div class="attractiion-img bg-white shadow-sm p-3">
                         <figure class="mb-0">
 
-                            <img src="{{ env('ASSET_URL') }}assets/images/img/yomunotri.jpg" alt="" class="img-fluid">
+                            <img src="{{ env('ASSET_URL') }}assets/images/img/yomunotri.jpg" alt=""
+                                class="img-fluid">
                             <figcaption class=" mt-2 text-center  text-uppercase">Yomunotri</figcaption>
 
                         </figure>
@@ -1832,7 +1872,8 @@
                     <div class="attractiion-img bg-white shadow-sm p-3">
                         <figure class="mb-0">
 
-                            <img src="{{ env('ASSET_URL') }}assets/images/img/gangotri.jpg" alt="" class="img-fluid">
+                            <img src="{{ env('ASSET_URL') }}assets/images/img/gangotri.jpg" alt=""
+                                class="img-fluid">
                             <figcaption class=" mt-2 text-center text-uppercase">Gangotri</figcaption>
 
                         </figure>
@@ -1850,7 +1891,8 @@
                     <div class="row justify-content-between align-items-center">
                         <div class="col-6 col-md-6">
                             <figure>
-                                <img src="{{ env('ASSET_URL') }}assets/images/img/sedans.jpg" alt="" class="img-fluid">
+                                <img src="{{ env('ASSET_URL') }}assets/images/img/sedans.jpg" alt=""
+                                    class="img-fluid">
                             </figure>
 
                         </div>
@@ -1868,7 +1910,8 @@
                     <div class="row justify-content-between align-items-center">
                         <div class="col-6 col-md-6">
                             <figure>
-                                <img src="{{ env('ASSET_URL') }}assets/images/img/suv.png" alt="" class="img-fluid">
+                                <img src="{{ env('ASSET_URL') }}assets/images/img/suv.png" alt=""
+                                    class="img-fluid">
                             </figure>
 
                         </div>
@@ -1935,7 +1978,8 @@
                 <div class="col-12 col-md-6 col-lg-3" data-aos="fade-up">
                     <div class="attractiion-img bg-white shadow-lg p-3">
                         <figure class="mb-0">
-                            <img src="{{ env('ASSET_URL') }}assets/images/img/hawamahal.png" alt="" class="img-fluid">
+                            <img src="{{ env('ASSET_URL') }}assets/images/img/hawamahal.png" alt=""
+                                class="img-fluid">
                             <figcaption class=" mt-2 text-center  text-uppercase">hawamahal</figcaption>
                         </figure>
                     </div>
@@ -1944,7 +1988,8 @@
                 <div class="col-12 col-md-6 col-lg-3 " data-aos="fade-up">
                     <div class="attractiion-img bg-white shadow-lg p-3">
                         <figure class="mb-0">
-                            <img src="{{ env('ASSET_URL') }}assets/images/img/india-gate.png" alt="" class="img-fluid">
+                            <img src="{{ env('ASSET_URL') }}assets/images/img/india-gate.png" alt=""
+                                class="img-fluid">
                             <figcaption class=" mt-2 text-center  text-uppercase">india gate</figcaption>
                         </figure>
                     </div>
@@ -1954,7 +1999,8 @@
                     <div class="attractiion-img bg-white shadow-lg p-3">
                         <figure class="mb-0">
 
-                            <img src="{{ env('ASSET_URL') }}assets/images/img/ram-mandinr.png" alt="" class="img-fluid">
+                            <img src="{{ env('ASSET_URL') }}assets/images/img/ram-mandinr.png" alt=""
+                                class="img-fluid">
                             <figcaption class=" mt-2 text-center  text-uppercase">ram mandinr</figcaption>
 
                         </figure>
@@ -1965,7 +2011,8 @@
                     <div class="attractiion-img bg-white shadow-lg p-3">
                         <figure class="mb-0">
 
-                            <img src="{{ env('ASSET_URL') }}assets/images/img/tajmahal.png" alt="" class="img-fluid">
+                            <img src="{{ env('ASSET_URL') }}assets/images/img/tajmahal.png" alt=""
+                                class="img-fluid">
                             <figcaption class=" mt-2 text-center  text-uppercase">taj mahal</figcaption>
 
                         </figure>
@@ -2017,9 +2064,9 @@
                             <div class="col-12">
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                            aria-controls="flush-collapseOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                            aria-expanded="false" aria-controls="flush-collapseOne">
                                             <h3> 1. What is Cab Yatra?</h3>
                                         </button>
                                     </h2>
@@ -2034,9 +2081,9 @@
                                 </div>
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                            aria-controls="flush-collapseTwo">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                            aria-expanded="false" aria-controls="flush-collapseTwo">
                                             <h3>2. How do I book a cab with Cab Yatra?</h3>
                                         </button>
                                     </h2>
@@ -2053,9 +2100,9 @@
                                 </div>
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                            aria-controls="flush-collapseThree">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                            aria-expanded="false" aria-controls="flush-collapseThree">
                                             <h3>3. Which cities does Cab Yatra operate in?</h3>
                                         </button>
                                     </h2>
@@ -2070,9 +2117,9 @@
                                 </div>
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseThree1" aria-expanded="false"
-                                            aria-controls="flush-collapseThree1">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree1"
+                                            aria-expanded="false" aria-controls="flush-collapseThree1">
                                             <h3>4. What types of taxi services does Cab Yatra offer? </h3>
                                         </button>
                                     </h2>
@@ -2092,9 +2139,9 @@
                                 </div>
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseThree2" aria-expanded="false"
-                                            aria-controls="flush-collapseThree2">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree2"
+                                            aria-expanded="false" aria-controls="flush-collapseThree2">
                                             <h3>5. Are Cab Yatra drivers verified? </h3>
                                         </button>
                                     </h2>
@@ -2112,9 +2159,9 @@
                             <div class="col-12">
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseThree3" aria-expanded="false"
-                                            aria-controls="flush-collapseThree3">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree3"
+                                            aria-expanded="false" aria-controls="flush-collapseThree3">
                                             <h3> 6. Can I cancel or reschedule a booking with Cab Yatra?</h3>
                                         </button>
                                     </h2>
@@ -2132,9 +2179,9 @@
                                 </div>
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseThree7" aria-expanded="false"
-                                            aria-controls="flush-collapseThree7">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree7"
+                                            aria-expanded="false" aria-controls="flush-collapseThree7">
                                             <h3>7. What payment options are available with Cab Yatra? </h3>
                                         </button>
                                     </h2>
@@ -2154,9 +2201,9 @@
                                 </div>
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseThree4" aria-expanded="false"
-                                            aria-controls="flush-collapseThree4">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree4"
+                                            aria-expanded="false" aria-controls="flush-collapseThree4">
                                             <h3> 8. Does Cab Yatra provide both one-way and round-trip services?</h3>
                                         </button>
                                     </h2>
@@ -2172,9 +2219,9 @@
                                 </div>
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseThree5" aria-expanded="false"
-                                            aria-controls="flush-collapseThree5">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree5"
+                                            aria-expanded="false" aria-controls="flush-collapseThree5">
                                             <h3>9. How are fares calculated at Cab Yatra? </h3>
                                         </button>
                                     </h2>
@@ -2191,9 +2238,9 @@
                                 </div>
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseThree6" aria-expanded="false"
-                                            aria-controls="flush-collapseThree6">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree6"
+                                            aria-expanded="false" aria-controls="flush-collapseThree6">
                                             <h3> 10. How can I contact Cab Yatra for help?</h3>
                                         </button>
                                     </h2>
@@ -2224,7 +2271,8 @@
                 <div class="col-12 col-lg-5">
                     <div class="" style="border:1px solid green">
                         <figure>
-                            <img src="{{config('app.asset_url')}}assets/images/img/faqs.webp" alt="" class="img-fluid">
+                            <img src="{{ config('app.asset_url') }}assets/images/img/faqs.webp" alt=""
+                                class="img-fluid">
                         </figure>
                     </div>
                 </div>
@@ -2250,8 +2298,8 @@
                 <div class="col-12 col-lg-6">
                     <div class="">
                         <figure>
-                            <img src="{{config('app.asset_url')}}assets/images/img/affordable-cab.webp" alt=""
-                                class="img-fluid">
+                            <img src="{{ config('app.asset_url') }}assets/images/img/affordable-cab.webp"
+                                alt="" class="img-fluid">
                         </figure>
                     </div>
                 </div>
@@ -2261,9 +2309,9 @@
     <!-- ================================== Cabby cab information ========================== -->
     <section class="sec-padding pt-0 pb-0">
         <!-- Modal  -->
-        @foreach($data['package'] as $key => $value)
-            <div class="modal fade" id="otherdetails{{$value->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+        @foreach ($data['package'] as $key => $value)
+            <div class="modal fade" id="otherdetails{{ $value->id }}" tabindex="-1"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" style="background-color: #E7E7E7;">
                     <div class="modal-content ">
                         <div class="modal-header border-0 justify-content-center">
@@ -2278,7 +2326,8 @@
             </div>
         @endforeach
         <!-- =================== Book modals ================== -->
-        <div class="modal fade" id="bookmodals" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="bookmodals" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-lg " style="background-color: #E7E7E7;">
                 <div class="modal-content border-0">
                     <div class="modal-header">
@@ -2338,13 +2387,15 @@
                             <!-- ================ Add on Services ============= -->
                             <h5 class="fs-14 fw-bold">Add on Services</h5>
                             <div class="form-check">
-                                <input class="form-check-input border-dark" type="checkbox" value="" id="flexCheckDefault">
+                                <input class="form-check-input border-dark" type="checkbox" value=""
+                                    id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Assured luggage space (either carrier or boot space) for Free
                                 </label>
                             </div>
                             <div class="form-check mt-1">
-                                <input class="form-check-input border-dark" type="checkbox" value="" id="flexCheckChecked">
+                                <input class="form-check-input border-dark" type="checkbox" value=""
+                                    id="flexCheckChecked">
                                 <label class="form-check-label" for="flexCheckChecked">
                                     Pet Allowed for Rs. 300
                                 </label>
@@ -2385,9 +2436,9 @@
     <script>
         /**
          * Initialize Google Places Autocomplete for city input fields
-         * @param {string} inputId - ID of the input element
-         * @param {string} hiddenFieldSelector - jQuery selector for hidden field to store city name
-         * @param {object} options - Additional options for autocomplete
+         * @@param {string} inputId - ID of the input element
+         * @@param {string} hiddenFieldSelector - jQuery selector for hidden field to store city name
+         * @@param {object} options - Additional options for autocomplete
          */
         // function initCityAutocomplete(inputId, hiddenFieldSelector, options = {}) {
         //     const inputElement = document.getElementById(inputId);
@@ -2504,7 +2555,7 @@
 
 
         // Initialize on page load
-        window.onload = function () {
+        window.onload = function() {
             const pickupAutocomplete = initCityAutocomplete(
                 'outStattionPickupCity',
                 '#hiddenOutStattionPickupCity'
@@ -2543,7 +2594,7 @@
         };
     </script>
     <script>
-        @if(Session::has('error'))
+        @if (Session::has('error'))
             Swal.fire({
                 icon: "error",
                 title: "Not Found",
@@ -2552,7 +2603,7 @@
         @endif
 
 
-        $(".localRoundPickupLocCitiesDropDown").on("change", function () {
+        $(".localRoundPickupLocCitiesDropDown").on("change", function() {
             var selectedValue = $(this).val();
             var selectedCityName = $(this).find("option:selected").text();
             $("#localRoundPickupLoc").val(selectedValue);
@@ -2564,7 +2615,7 @@
 
 
         //================== validation for searching ============//
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.lodar_box').addClass('d-none');
 
             function validateAndSubmit({
@@ -2600,7 +2651,7 @@
                 }
             }
 
-            $('#searchCab').on("click", function () {
+            $('#searchCab').on("click", function() {
                 console.log("click");
                 validateAndSubmit({
                     pickup: '#hiddenOutStattionPickupCity',
@@ -2610,7 +2661,7 @@
                 });
             });
 
-            $('#localRouteSearch').on("click", function () {
+            $('#localRouteSearch').on("click", function() {
                 validateAndSubmit({
                     pickup: '#localRoundPickupLoc',
                     destination: '#timeschaduleId',
@@ -2620,7 +2671,7 @@
                 });
             });
 
-            $('.outStationRouteSearchBtn').on("click", function () {
+            $('.outStationRouteSearchBtn').on("click", function() {
                 validateAndSubmit({
                     pickup: '#outStationRoundPickUp',
                     destination: '#outStationRoundDestination',
@@ -2630,7 +2681,7 @@
                 });
             });
 
-            $('#airportSearchBtn').on("click", function () {
+            $('#airportSearchBtn').on("click", function() {
                 validateAndSubmit({
                     pickup: '#outstationLocalPickUpLocation',
                     destination: '#localAirportSelectAirport',
@@ -2669,7 +2720,8 @@
 
         function getAddressFromCoordinates(lat, lng) {
 
-            const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAsQryHkf5N7-bx_ZBMJ-X7yFMa9WTqwt0`;
+            const url =
+                `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAsQryHkf5N7-bx_ZBMJ-X7yFMa9WTqwt0`;
 
             fetch(url)
                 .then((response) => response.json())
@@ -2768,7 +2820,7 @@
             });
 
             // Listen for when a place is selected
-            autocomplete.addListener("place_changed", function () {
+            autocomplete.addListener("place_changed", function() {
                 const place = autocomplete.getPlace();
 
                 if (!place.geometry) {
@@ -2798,12 +2850,13 @@
         //======================= Round Trip Cities Drop Down ==================//
 
         //======================= Round Trip add more fields ==================//
-        $(document).ready(function () {
+        $(document).ready(function() {
             var i = 2;
-            $(".addMoreRoundTripDestinationDiv").on("click", function (e) {
+            $(".addMoreRoundTripDestinationDiv").on("click", function(e) {
                 console.log("click");
                 e.preventDefault();
-                html = `<div class="col-12 mt-2 addMoreRoundTripDestinationDiv${i}">
+                html =
+                    `<div class="col-12 mt-2 addMoreRoundTripDestinationDiv${i}">
                                                                                                                                                                                                                                     <div class="input-box d-flex align-items-center py-2 ps-3 bg-green-light rounded-pill">
                                                                                                                                                                                                                                         <img src="https://cabyatra.com/public/web/assets/images/icons/location-black.png" alt="location" height="20" width="20">
                                                                                                                                                                                                                                         <input type="email" class="form-control ps-1 bg-transparent border-0 " id="outStationRoundDestination${i}" name="destination[]" onclick="outStationRoutAdMorePickupLoc(${i})" placeholder="Enter Destination Location" onclick="outStationRoutAdMorePickupLoc(${i})">
@@ -2818,9 +2871,9 @@
             });
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             var i = 2;
-            $(".addMoreOutStationPickUp").on("click", function (e) {
+            $(".addMoreOutStationPickUp").on("click", function(e) {
                 console.log("click");
                 e.preventDefault();
                 html = `<div class="col-12 mt-2 outStattionPickupCityDiv${i}">
@@ -2858,7 +2911,7 @@
             });
 
             // Listen for when a place is selected
-            autocomplete.addListener("place_changed", function () {
+            autocomplete.addListener("place_changed", function() {
                 const place = autocomplete.getPlace();
 
                 if (!place.geometry) {
@@ -2895,11 +2948,11 @@
         }
         //======================= Round Trip add more fields ==================//
     </script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@@11/swiper-bundle.min.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
@@ -2932,13 +2985,11 @@
             },
         });
     </script>
-    </script>
 @endsection
 @push('scripts')
     {{--
     <script src="{{config('app.asset_url')}}assets/js/addMore1.js"></script> --}}
-    <script src="{{config('app.asset_url')}}assets/js/dropDownCitiesUsingGoogle.js"></script>
-    <script src="{{config('app.asset_url')}}assets/js/distanceCalculator.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+    <script src="{{ config('app.asset_url') }}assets/js/dropDownCitiesUsingGoogle.js"></script>
+    <script src="{{ config('app.asset_url') }}assets/js/distanceCalculator.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@@11/swiper-bundle.min.js"></script>
 @endpush

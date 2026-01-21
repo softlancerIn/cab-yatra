@@ -21,19 +21,22 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5VP1EKFDH5"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
 
         gtag('config', 'G-5VP1EKFDH5');
     </script>
     <script type="application/ld+json">
         {
-        "@context": "https://schema.org/",
-        "@type": "WebSite",
+        "@@context": "https://schema.org/",
+        "@@type": "WebSite",
         "name": "Cab Yatra",
         "url": "https://cabyatra.com/",
         "potentialAction": {
-            "@type": "SearchAction",
+            "@@type": "SearchAction",
             "target": "{search_term_string}",
             "query-input": "required name=search_term_string"
         }
@@ -41,13 +44,13 @@
     </script>
     <script type="application/ld+json">
         {
-        "@context": "https://schema.org",
-        "@type": "Organization",
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
         "name": "Cab Yatra",
         "url": "https://cabyatra.com/",
         "logo": "https://cabyatra.com/public/admin/assets/images/admin_logo.jpeg",
         "contactPoint": {
-            "@type": "ContactPoint",
+            "@@type": "ContactPoint",
             "telephone": "+91-9911995523",
             "contactType": "customer service",
             "areaServed": "IN",
@@ -88,8 +91,8 @@
     <!-- Event snippet for Purchase conversion page In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
     <script>
         function gtag_report_conversion(url) {
-            var callback = function () {
-                if (typeof (url) != 'undefined') {
+            var callback = function() {
+                if (typeof(url) != 'undefined') {
                     window.location = url;
                 }
             };
@@ -118,7 +121,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-15H4C3G6RJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
 
         gtag('config', 'G-15H4C3G6RJ');
@@ -126,28 +132,28 @@
 
 
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-    <link rel="canonical" href="{{$url}}" />
-    <title>{{$data['meta_tags']->title ?? 'Cab Yatra'}}</title>
-    <meta name="description" content="{{$data['meta_tags']->description ?? 'Cab Yatra'}}">
-    <meta name="keyword" content="{{$data['meta_tags']->keyword ?? 'Cab Yatra'}}">
+    <link rel="canonical" href="{{ $url }}" />
+    <title>{{ $data['meta_tags']->title ?? 'Cab Yatra' }}</title>
+    <meta name="description" content="{{ $data['meta_tags']->description ?? 'Cab Yatra' }}">
+    <meta name="keyword" content="{{ $data['meta_tags']->keyword ?? 'Cab Yatra' }}">
     <link href="https://cabyatra.com/public/admin/assets/images/admin_logo.jpeg" rel="icon">
 
     <!----------- OG TAG ------------------->
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="Website" />
-    <meta property="og:title" content="{{$data['meta_tags']->title ?? 'Cab Yatra'}}" />
-    <meta property="og:description" content="{{$data['meta_tags']->description ?? 'Cab Yatra'}}" />
+    <meta property="og:title" content="{{ $data['meta_tags']->title ?? 'Cab Yatra' }}" />
+    <meta property="og:description" content="{{ $data['meta_tags']->description ?? 'Cab Yatra' }}" />
     <meta property="og:site_name" content="Cab Yatra" />
-    <meta property="og:url" content="{{$url}}" />
+    <meta property="og:url" content="{{ $url }}" />
     <meta property="og:image" content="" />
     <meta property="og:image:width" content="400" />
     <meta property="og:image:height" content="400" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{$data['meta_tags']->title ?? 'Cab Yatra'}}" />
-    <meta name="twitter:description" content="{{$data['meta_tags']->description ?? 'Cab Yatra'}}" />
+    <meta name="twitter:title" content="{{ $data['meta_tags']->title ?? 'Cab Yatra' }}" />
+    <meta name="twitter:description" content="{{ $data['meta_tags']->description ?? 'Cab Yatra' }}" />
     <meta name="twitter:image" content="" />
-    <link rel="alternate" hreflang="en-US" href="{{$url}}" />
-    <link rel="alternate" href="{{$url}}" hreflang="x-default" />
+    <link rel="alternate" hreflang="en-US" href="{{ $url }}" />
+    <link rel="alternate" href="{{ $url }}" hreflang="x-default" />
 
     {!! $data['meta_tags']->script ?? '' !!}
 
@@ -179,15 +185,14 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+</script>
 <!--      slick slider js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
     integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16844763758">
-</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16844763758"></script>
 <script src="https://cabyatra.com/public/web/assets/js/main.js"></script>
 </body>
 
