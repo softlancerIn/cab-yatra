@@ -50,19 +50,41 @@ class AppBannerContolller extends Controller
 
     public function update(Request $request)
     {
+        $banner = AppBanner::findOrFail($request->id);
+
         if ($request->has('image')) {
-            $image = $this->commonServices->fileupload($request->image, 'app_banner');
-            $update = AppBanner::where('id', $request->id)->update([
-                'image' => $image,
-            ]);
+            $banner->image = $this->commonServices->fileupload(
+                $request->image,
+                'app_banner'
+            );
         }
 
-        $update = AppBanner::where('id', $request->id)->update([
-            'name' => $request->name,
-            'url' => $request->url ?? '',
-            'status' => $request->status,
-        ]);
+        $banner->name = $request->name;
+        $banner->url = $request->url ?? '';
+        $banner->status = $request->status;
 
-        return redirect()->route('banner_list')->with('success', 'Data Upated Successfully!');
+        $banner->save(); // 🔥 OBSERVER FIRES HERE
+
+        return redirect()->route('banner_list')
+            ->with('success', 'Data Updated Successfully!');
     }
+
+
+    // public function update(Request $request)
+    // {
+    //     if ($request->has('image')) {
+    //         $image = $this->commonServices->fileupload($request->image, 'app_banner');
+    //         $update = AppBanner::where('id', $request->id)->update([
+    //             'image' => $image,
+    //         ]);
+    //     }
+
+    //     $update = AppBanner::where('id', $request->id)->update([
+    //         'name' => $request->name,
+    //         'url' => $request->url ?? '',
+    //         'status' => $request->status,
+    //     ]);
+
+    //     return redirect()->route('banner_list')->with('success', 'Data Upated Successfully!');
+    // }
 }

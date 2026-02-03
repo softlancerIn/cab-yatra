@@ -55,7 +55,6 @@ class HomeController extends Controller
 
         $app_banner = AppBanner::where('status', '1')->get(['id', 'name', 'image', 'url']);
 
-
         //========================== New Booking ===========================================//
         $new_booking = cabBooking::with(['carCategory', 'car', 'timeSchadule_data'])->where(['is_assigned' => '1', 'is_driver_accepted' => '0'])->select(['id', 'orderId', 'type', 'subType', 'is_airpotToFrom', 'mobile', 'pickUp_date', 'pickUp_time', 'timeSchadule_id', 'total_faire', 'include_km', 'online_payment', 'offline_payment', 'driver_comission', 'pickUpLoc', 'destinationLoc', 'carCategory_id', 'add_onService', 'is_driver_accepted', 'is_driver_createBooking', 'is_show_phoneNumber', 'remark', 'destination_date', 'fuel_type', 'extra_fair_perKm', 'toll', 'tax'])->orderBy('id', 'DESC')->paginate(10);
 
@@ -72,10 +71,6 @@ class HomeController extends Controller
         }
 
         $active_booking_ids = AssignBooking::where('driver_id', $user->id)
-            // ->where(function ($query) {
-            //     $query->where('status', '0')
-            //         ->orWhere('status', '1');
-            // })
             ->orderBy('id', 'DESC')
             ->pluck('booking_id')
             ->toArray();
@@ -532,27 +527,27 @@ class HomeController extends Controller
 
         try {
             $rules = [
-                'car_category_id' => 'required',
-                'fuel_type' => 'required',
-                'trip_type' => 'required',
-                'pickup_address' => 'required',
-                'start_date' => 'required',
-                'start_time' => 'required',
-                'extra_price_perKm' => 'required',
-                'toll' => 'required',
-                'tax' => 'required',
-                'total_amount' => 'required',
-                'comission' => 'required',
-                'add_on_service' => 'required',
+                'car_category_id'     => 'required',
+                'fuel_type'           => 'required',
+                'trip_type'           => 'required',
+                'pickup_address'      => 'required',
+                'start_date'          => 'required',
+                'start_time'          => 'required',
+                'extra_price_perKm'   => 'required',
+                'toll'                => 'required',
+                'tax'                 => 'required',
+                'total_amount'        => 'required',
+                'comission'           => 'required',
+                'add_on_service'      => 'required',
                 'is_show_phoneNumber' => 'required',
             ];
 
             if ($request->trip_type == '0') {
-                $baseRules['end_date'] = 'required';
-                $baseRules['end_time'] = 'required';
+                $rules['end_date'] = 'required';
+                $rules['end_time'] = 'required';
             }
-            $validator = Validator::make($request->all(), $baseRules);
 
+            $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
                 return response()->json([
                     'error' => $validator->errors(),
@@ -568,7 +563,7 @@ class HomeController extends Controller
                 '3' => ['type' => '0', 'subType' => '3', 'prefix' => '#ORD_LRTCB'],
             ];
 
-             $tripInfo = $tripTypes[$request->trip_type] ?? [
+            $tripInfo = $tripTypes[$request->trip_type] ?? [
                 'type' => '0',
                 'subType' => '0',
                 'prefix' => '#ORD_DEFAULT',
@@ -582,57 +577,48 @@ class HomeController extends Controller
                 $timeScheduleId = $schedule->id ?? null;
             }
 
-            $totalFare = ($request->total_amount - $request->comission);
-            $add_on_services = [];
-            if ($request->add_on_service === 'Yes') {
-                $add_on_services = ['assured_laugage'];
-            }
-
-            $includedKm = $request->total_km;
-            if (($includedKm == '') || $includedKm == null || $includedKm == '0') {
-                $includedKm = '0';
-            }
-
             $onlinePayment = 0;
-            $offlinePayment = $totalFare;
-            $pickupLoc = json_encode($request->pickup_address);
-            $destinationLoc = json_encode($request->destination_address);
 
-            $fuel_type = (string)$request->fuel_type;
-            if ($request->fuel_type == '-1') {
-                $fuel_type = '1';
-            }
+            $totalFare = $request->total_amount - $request->comission;
 
-            $picUp_date = $request->start_date;
+            $addOnServices = $request->add_on_service === 'Yes'
+                ? ['assured_laugage']
+                : [];
 
-            $booking = cabBooking::create([
+            $includedKm = $request->total_km ?: '0';
+
+            $fuelType = $request->fuel_type == '-1'
+                ? '1'
+                : (string) $request->fuel_type;
+
+            cabBooking::create([
                 'driver_id' => $user->id,
-                'orderId' => $orderId,
-                'type' => $tripInfo['type'],
-                'subType' => $tripInfo['subType'],
+                'orderId'   => $orderId,
+                'type'      => $tripInfo['type'],
+                'subType'   => $tripInfo['subType'],
                 'carCategory_id' => $request->car_category_id,
-                'name' => $request->name ?? '',
-                'mobile' => $request->phone ?? '',
-                'email' => $request->email ?? 'testuser@gmail.com',
-                'address' => $request->address ?? '',
+                'name'      => $request->name ?? '',
+                'mobile'    => $request->phone ?? '',
+                'email'     => $request->email ?? 'testuser@gmail.com',
+                'address'   => $request->address ?? '',
                 'timeSchadule_id' => $timeScheduleId,
-                'pickupLoc' => $pickupLoc,
-                'destinationLoc' => $destinationLoc,
-                'pickUp_date' => $request->start_date,
-                'pickUp_time' => $request->start_time,
+                'pickupLoc'       => json_encode($request->pickup_address),
+                'destinationLoc'  => json_encode($request->destination_address),
+                'pickUp_date'     => $request->start_date,
+                'pickUp_time'     => $request->start_time,
                 'destination_date' => $request->end_date ?? '',
                 'destination_time' => $request->end_time ?? '',
-                'fuel_type' => $fuel_type ?? '',
-                'coupon_id' => $request->coupon_id ?? '',
+                'fuel_type'       => $fuelType,
+                'coupon_id'       => $request->coupon_id ?? '',
                 'biling_name' => $request->biling_name ?? '',
                 'biling_gstNo' => $request->biling_gstNo ?? '',
-                'add_onService' => json_encode($add_on_services ?? []),
+                'add_onService' => json_encode($addOnServices),
                 'payment_mode' => $request->payment_mode ?? '2',
                 'total_faire' => $totalFare,
                 'payment_infoId' => $request->razorpay_no ?? '',
                 'online_payment' => $onlinePayment,
-                'offline_payment' => $offlinePayment,
-                'include_km' => $includedKm ?? '',
+                'offline_payment' => $totalFare,
+                'include_km' => $includedKm,
                 'extra_fair_perKm' => $request->extra_price_perKm,
                 'toll' => $request->toll,
                 'tax' => $request->tax,
@@ -644,7 +630,8 @@ class HomeController extends Controller
             ]);
 
             $mailData = $request->email;
-            $emailData = [
+
+            Mail::to('cabyatrabooking@gmail.com')->send(new UserConfirmBooking([
                 'orderId' => $orderId,
                 'type' => $tripInfo['type'],
                 'subType' => $tripInfo['subType'],
@@ -652,23 +639,21 @@ class HomeController extends Controller
                 'pickUpLoc' => $request->pickup_address,
                 'destinationLoc' => $request->destination_address,
                 'pickUp_time' => $request->start_time,
-                'include_km' => $request->included_km,
+                'include_km' => $includedKm,
                 'extra_fair_perKm' => $request->extra_price_perKm,
                 'online_payment' => $onlinePayment,
-                'offline_payment' => $offlinePayment,
-            ];
-
-            Mail::to('cabyatrabooking@gmail.com')->send(new UserConfirmBooking($emailData));
+                'offline_payment' => $totalFare,
+            ]));
 
             DB::commit();
+
             return response()->json([
                 'status' => true,
-                'message' => 'Booking Added Successfuly!',
-                'data' => '',
+                'message' => 'Booking Added Successfully!',
             ], 200);
         } catch (\Throwable $th) {
             DB::rollBack();
-             return response()->json([
+            return response()->json([
                 'status' => false,
                 'message' => 'Something went wrong!',
                 'error' => $th->getMessage(),

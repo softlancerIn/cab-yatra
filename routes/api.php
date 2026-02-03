@@ -16,6 +16,15 @@ use App\Http\Controllers\Api\User\{
     UserHomeController,
 };
 
+use App\Http\Controllers\Api\V2\{
+    HomeController as NewHomeController,
+    BookingChatRequestController,
+    SubDriverController,
+    BookingController,
+    AlertController,
+    ProfileController,
+};
+
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
@@ -44,12 +53,12 @@ Route::prefix('driver')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::controller(HomeController::class)->group(function () {
             Route::match(['get', 'post'], 'home', 'index')->name('home');
-            Route::match(['get', 'post'], 'booking_details', 'booking_details')->name('booking_details');
+            // Route::match(['get', 'post'], 'booking_details', 'booking_details')->name('booking_details');
             Route::match(['get', 'post'], 'update_booking_status', 'updateBookingStatus')->name('update_booking_status');
             Route::match(['get', 'post'], 'crete_razorpay_oder_id', 'createRazorPayOrderId')->name('crete_razorpay_oder_id');
             Route::match(['get', 'post'], 'my_booking', 'myBooking')->name('my_booking');
             Route::match(['get', 'post'], 'get-car-category', 'getCarCategory')->name('get_car_category');
-            Route::match(['get', 'post'], 'add_booking', 'addBooking')->name('add_booking');
+            // Route::match(['get', 'post'], 'add_booking', 'addBooking')->name('add_booking');
             Route::match(['get', 'post'], 'update_booking/{id}', 'upadteBooking')->name('update_booking');
 
             Route::match(['get', 'post'], 'deleteDriverBooking', 'deleteDriverBooking')->name('deleteDriverBooking');
@@ -64,7 +73,7 @@ Route::prefix('driver')->group(function () {
             Route::match(['get', 'post'], 'cancel_booking', 'deleteBooking')->name('delete_booking');
             Route::match(['get', 'post'], 'completeBooking', 'completeBooking')->name('completeBooking');
             Route::match(['get', 'post'], 'cancelBooking', 'cancelBooking')->name('cancelBooking');
-            Route::match(['get', 'post'], 'profile', 'profile')->name('profile');
+            // Route::match(['get', 'post'], 'profile', 'profile')->name('profile');
 
             Route::match(['get', 'post'], 'driverPaymentMethod', 'driverPaymentMethod')->name('driverPaymentMethod');
             Route::match(['get', 'post'], 'bookingRatignReview', 'bookingRatignReview')->name('bookingRatignReview');
@@ -91,9 +100,6 @@ Route::prefix('driver')->group(function () {
         Route::match(['get', 'post'], 'get-live-booking-data', 'getLiveBooking')->name('getLiveBooking');
     });
 });
-
-
-
 
 Route::prefix('users')->group(function () {
     Route::controller(UserAuthController::class)->group(function () {
@@ -147,3 +153,5 @@ Route::prefix('users')->group(function () {
     //     Route::match(['get', 'post'], 'get-live-booking-data', 'getLiveBooking')->name('getLiveBooking');
     // });
 });
+
+require __DIR__ . '/api-v2.php';
